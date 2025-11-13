@@ -1,13 +1,12 @@
 from disnake.ext import commands
 
-
-class PingCommand(commands.Cog):
-    def __init__(self, bot: commands.Bot):
+class Ping(commands.Cog):
+    def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command()
-    async def ping(self, inter: disnake.ApplicationCommandInteraction):
-      await inter.response.send_message(f"Понг! {round(self.bot.latency * 1000)}мс")
+    @commands.command()
+    async def ping(self, ctx):
+        await ctx.send("🏓 Pong!")
 
-def setup(bot: commands.Bot):
-    bot.add_cog(PingCommand(bot))
+def setup(bot):
+    bot.add_cog(Ping(bot))

@@ -11,9 +11,8 @@ bot = commands.Bot()
 async def on_ready():
   print("бот готов!")
 
-@bot.slash_command(guild_ids=[1234, 5678])  
-async def ping(inter):
-  await inter.response.send_message("Понг!")
+bot.load_extension("cogs.ping")
+
 
 bot.run(TOKEN)
 
